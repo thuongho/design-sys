@@ -1,0 +1,151 @@
+Design Sys
+- contain pure and presentational components only
+- no app specific business logic
+
+Create Inventory
+- create inventory of most used components
+
+Interface Audit
+- get screenshots of ingredients of interface
+- Grab headings, text fields, radio buttons, carousels, accordions, tabs, images, icons, video players, graphs, etc, etc.
+- get distinct treatments of a component
+-- bevel with right facing caret and another with bevel/caret
+- categorize so that you can view various treatments of a component side by side
+
+Benefits of catelog interface
+- sound design system
+- set up style guide or pattern library
+
+Useful heuristics
+- UI pattern used more than 3x => reusable component
+- UI component used in 3 or more projects/teams, put in design system
+
+Removed create-react-app src default and added src components
+
+yarn add prop-types styled-components polished
+
+Include styling constants for
+- typography
+- colors
+- spacing
+- etc that are reused across projects
+
+Design Tokens
+- Single Source of Truth
+- values are in one place JSON file
+- all the css values are variables
+
+Architeching Tokens
+1. Show options first, then decisions next
+
+# Choices
+
+color :
+  white : &color-white "#FFFFFF"
+  black : &color-black "#262626"
+  neutral :
+    20 : &color-neutral-20 "#222222"
+    90 : &color-neutral-90 "#EEEEEE"
+  blue:
+    50: &color-blue-50 "#2196F3"
+    60: &color-blue-60 "#1E88E5"
+  # and many more...
+
+# Decisions
+
+interactive-color :
+  default: *color-blue-50
+  dark: *color-blue-60
+
+background-color :
+  default : *color-white
+  light : *color-neutral-90
+  dark : *color-neutral-20
+  disabled: *color-neutral-90
+
+text-color :
+  default : *color-neutral-25
+  on-light : *color-neutral-25
+  on-dark : *color-white
+  light : *color-neutral-55
+  disabled : *color-neutral-65
+  link :
+    default : *color-blue-50
+    on-dark : *color-white
+
+
+2. start with color, font and don't stop there
+- big 3: color, typography, and iconography
+
+color :
+interactive-color :
+background-color :
+text-color :
+font :
+	family :
+	size :
+	line-height :
+border : 
+size :
+	icon :
+space :
+	inset :
+	stack :
+	inline :
+	grid :
+layout :
+	row :
+	margin :
+	gutter : 
+shadow :
+	block :
+	text :
+size :
+transition :
+timing :
+layers :
+responsive :
+theme :
+	product :
+	age :
+	motif :
+
+
+3. Vary options across meaningful scales
+- similarly t-shirts: xs, s, l, xl, xxxl
+
+space :
+  default : 16px
+  xxs: 2px
+  xs: 4px
+  s: 8px
+  m: 16px
+  l: 32px
+  xl: 64px
+  inset :
+    default : 16px 16px 16px 16px
+    xxs : 2px 2px 2px 2px
+    xs : 4px 4px 4px 4px
+    s : 8px 8px 8px 8px
+    m : 16px 16px 16px 16px
+    l : 32px 32px 32px 32px
+    xl : 64px 64px 64px 64px
+
+
+Implementing Tokens
+- consolidating decisions as a huge stack of predictable, hierarchical variable names in SASS
+-- but this is buried in one place limiting it to just that tech
+- spread tokens throughout a sys by using JSON
+
+7. Make Token data reusable via JSON
+
+8. Manage & read token data via YAML
+- JSON is imperfect as a place to manage data
+-- prone to error, lacks support, lacks variables 
+- YAML more human readable
+- variables and comments
+- yamljs
+-- transform YAML data to JS object
+-- https://www.npmjs.com/package/yamljs
+
+9. Automate documentation with token data
