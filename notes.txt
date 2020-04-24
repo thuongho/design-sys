@@ -180,3 +180,18 @@ Knobs
 - knobs don't replace story
 -- great for exploring edge cases
 -- stories are used for showcasing the intended cases
+
+
+Review with Teams
+- collaborate with continuous integration and visual review
+
+Single source of truth or single point of failure
+- bugs will have a snowballing effect as design system is a dependency
+
+connected to design system
+- web app
+- marketing site
+- mobile app
+- docs site
+
+
