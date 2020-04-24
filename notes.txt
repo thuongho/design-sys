@@ -149,3 +149,34 @@ Implementing Tokens
 -- https://www.npmjs.com/package/yamljs
 
 9. Automate documentation with token data
+
+
+Code formatting and linting for hygiene
+prettier
+
+Storybook
+- component explorer for developing UI components in isolation
+install and run Storybook
+npx -p @storybook/cli sb init
+
+Add global style to storybook
+create .storybook/preview.js
+- create src/shared/globalStyle using styledComponents createGlobalstyle
+- use globalStyle decorator to wrap story in preview
+-- this will ensure GlobalStyle is rendered no matter which story is selected
+
+Add font to storybook
+.storybook/preview-head.html
+- link fonts
+
+Addon
+Storysource
+yarn add --dev @storybook/addon-storysource
+- this addon shows the underlying code in addon panel
+- add to .storybook/main.js
+
+Knobs
+- stress test components
+- knobs don't replace story
+-- great for exploring edge cases
+-- stories are used for showcasing the intended cases
