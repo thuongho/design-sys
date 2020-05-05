@@ -194,4 +194,29 @@ connected to design system
 - mobile app
 - docs site
 
+create feature branch
+- update the design
+- create a PR and it will deploy to Netlify
+- open an issue and assign it to teammate with the link
+- they can check the PR
 
+UI component Testing
+
+Best Practice
+- Articulate supported component states as stories to clarify which combinations of inputs yields a given state. Ruthlessly omit unsupported states to reduce noise.
+- Render components consistently to mitigate variability that can be triggered by randomized (Math.random) or relative (Date.now) inputs.
+- “The best kind of stories allow you to visualize all of the states your component could experience in the wild” – Tim Hingston, Tech lead at Apollo GraphQL
+
+Visual test appearance
+- visual test capture image of UI component in browser environment
+- new screenshot compared to previous accepted baseline
+- get notified for visual differences
+
+chromatic package
+yarn add --dev chromatic
+
+publish storybook
+yarn chromatic --project-token=<id>
+
+first test to establish your visual test baselines
+npx chromatic --project-token=<project-token>
