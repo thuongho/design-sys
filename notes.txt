@@ -194,6 +194,8 @@ connected to design system
 - mobile app
 - docs site
 
+use netlify.toml to deploy to Netlify
+
 create feature branch
 - update the design
 - create a PR and it will deploy to Netlify
@@ -220,3 +222,35 @@ yarn chromatic --project-token=<id>
 
 first test to establish your visual test baselines
 npx chromatic --project-token=<project-token>
+
+
+The project token cannot be used to read story data, it can only be used to create new builds.
+If you're running Chromatic via continuous integration, we recommend setting \`CHROMATIC_PROJECT_TOKEN\` environment variable in your CI environment. You can then remove the --project-token from your 'package.json'.
+
+
+Unit Tests
+Note: Watch out for too many unit tests which can make updates cumbersome. We recommend unit testing design systems in moderation.
+
+**** Accessibilty Test
+“Accessibility means all people, including those with disabilities, can understand, navigate, and interact with your app... Online [examples include] alternative ways to access content such as using the tab key and a screen reader to traverse a site.”
+
+Disabilities affect 15% of the population according to the World Health Organization. 
+Design systems have an outsized impact on accessibility because they contain the building blocks of user interfaces.
+Improving accessibility of just one component means every instance of that component across your company benefits.
+
+** Get a headstart on inclusive UI with Storybook’s Accessibility addon, a tool for verifying web accessibility standards (WCAG) in realtime.
+yarn add --dev @storybook/addon-a11y
+
+add a11y to .storybook/main.js 
+
+add withA11y decorator to preview.js
+
+
+Snapshot tests (Jest)
+This technique captures the code output of UI components and compares it to previous versions. Testing UI component markup ends up testing implementation details (code), not what the user experiences in the browser.
+
+Diffing code snapshots is unpredictable and prone to false positives. At the component level, code snapshotting doesn’t account for global changes like design tokens, CSS, and 3rd party API updates (web fonts, Stripe forms, Google Maps, etc.). In practice, developers resort to “approving all” or ignoring snapshot tests altogether.
+
+
+End-to-end tests
+Validating user flows are often overkill for this task because the tests are time-consuming to create and brittle to maintain. However, in rare situations, components may benefit from end-to-end tests. For instance, validating complex UIs like datepickers or self-contained payment forms.
