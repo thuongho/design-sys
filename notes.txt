@@ -312,3 +312,10 @@ to use Doc Blocks
 import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
 <Preview withToolbar>
 <Props of={Avatar} />
+
+Custom pages
+- cover page
+- create src/components/Intro.stories.mdx
+- get this to load first by loading it first in main.js
+- create package.json script for building docs to deploy it to netlify so others can read it
+build-storybook -s public --docs
