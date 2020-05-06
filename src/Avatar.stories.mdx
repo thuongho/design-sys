@@ -1,0 +1,96 @@
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
+import { withKnobs, select, boolean } from '@storybook/addon-knobs';
+
+import { Avatar } from './Avatar';
+
+<Meta title="Design System|Avatar" component={Avatar} />
+
+# Avatar
+
+## Displays an image that represents a user or organization
+
+Use an avatar for attributing actions or content to specific users. The user's name should _always_ be present when using Avatar - either printed beside the avatar or in a tooltip.
+
+<Preview withToolbar>
+  <Story name="standard">
+    <Avatar
+      size="large"
+      username="Sam"
+      src="https://avatars3.githubusercontent.com/u/5452152"
+    />
+  </Story>
+</Preview>
+
+<Props of={Avatar} />
+
+## Usage
+
+Avatar is used to represent a person or an organization. By default the avatar shows an image and gracefully falls back to the first initial of the username. While hydrating the component you may find it useful to render a skeleton template to indicate that Avatar is awaiting data. Avatars can be grouped with the AvatarList component.
+
+### Sizes
+
+4 sizes are supported
+
+<Story name="sizes">
+  <div>
+    <Avatar
+      size='large'
+      username='Sam'
+      src='https://avatars3.githubusercontent.com/u/5452152'
+    />
+    <Avatar
+      size='medium'
+      username='Sam'
+      src='https://avatars3.githubusercontent.com/u/5452152'
+    />
+    <Avatar
+      size='small'
+      username='Sam'
+      src='https://avatars3.githubusercontent.com/u/5452152'
+    />
+    <Avatar
+      size='tiny'
+      username='Sam'
+      src='https://avatars3.githubusercontent.com/u/5452152'
+    />
+  </div>
+</Story>
+
+### Default Values
+
+When no image is supplied to the `src` prop, Avatar display initials. Avatar should be used sparingly in sitations without access
+
+<Story name="initial">
+  <div>
+    <Avatar username="Sam H" />
+    <Avatar username='Don N' />
+    <Avatar username='Kalani L' />
+    <Avatar username='Minh H' />
+  </div>
+</Story>
+
+### Loading
+
+The loading state is used when the image or username is, well, loading.
+
+<Story name="loading">
+  <div>
+    <Avatar size="large" loading />
+    <Avatar size="medium" loading />
+    <Avatar size="small" loading />
+    <Avatar size="tiny" loading />
+  </div>
+</Story>
+
+### Playground
+
+Experiment with this story with Knobs addon in Canvas mode.
+
+<Story name="knobs" parameters={{ decorators: [withKnobs] }}>
+  <Avatar
+    loading={boolean('Loading')}
+    size={select('Size', ['tiny', 'small', 'medium', 'large'])}
+    username="Sam H"
+    src="https://avatars3.githubusercontent.com/u/5452152"
+  />
+</Story>

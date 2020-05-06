@@ -254,3 +254,61 @@ Diffing code snapshots is unpredictable and prone to false positives. At the com
 
 End-to-end tests
 Validating user flows are often overkill for this task because the tests are time-consuming to create and brittle to maintain. However, in rare situations, components may benefit from end-to-end tests. For instance, validating complex UIs like datepickers or self-contained payment forms.
+
+
+Document for stakeholders
+design system user manual
+
+Requirements
+- stay up to date
+- facilitate writing (markdown)
+- reduce maintenance time
+- provide boilerplate
+- customizability
+
+Generate docs from stories
+yarn add --dev @storybook/addon-docs
+
+update main.js
+{
+  name: '@storybook/addon-docs',
+  options: {
+    configureJSX: true
+  }
+}
+- default addon take control of docs
+
+Behind the scenes, Storybook Docs created a new “Docs” tab for each component. It populated the tab with frequently used documentation pieces like interactive previews, source code viewers, and a props table
+
+add metadata that explains why, when, how
+src/Avatar.stories.js
+- add componentSubtitle
+
+adding comments in src/Avatar.js will show up as markdown in storybook docs
+/** this shows up */ in normal component
+// this is ignored
+- propTypes can be misused, add comments to render them in docs
+
+We can’t assume other developers know what each story represents. Write some descriptive text for the stories in src/Avatar.stories.js
+- using parameters in stories
+
+Markdown/MDX
+- MDX allows use of interactive code JSX inside of Markdown
+- this gives ultimate control over how documentation renders
+
+update main.js
+- stories: ['../src/**/*.stories.(js|mdx)'],
+- add '@storybook/addon-docs',
+- custom control over docs
+
+create src/Avatar.stories.mdx
+- this will replace docs tab in storybook from the default addon before
+
+Storybook Docs come with “Doc Blocks”
+- readymade components like interactive previews
+- the props table
+
+to use Doc Blocks
+import { Meta, Story, Props, Preview } from '@storybook/addon-docs/blocks';
+<Preview withToolbar>
+<Props of={Avatar} />

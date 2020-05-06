@@ -8,14 +8,16 @@ export default {
 
   parameters: {
     component: Avatar,
-  },
+    componentSubtitle:
+      'Displays an image that represents a user or organization'
+  }
 };
 
 export const standard = () => (
   <Avatar
     size='large'
-    username='Tom Coleman'
-    src='https://avatars2.githubusercontent.com/u/132554'
+    username='Sam'
+    src='https://avatars3.githubusercontent.com/u/5452152'
   />
 );
 
@@ -23,33 +25,40 @@ export const sizes = () => (
   <div>
     <Avatar
       size='large'
-      username='Tom Coleman'
-      src='https://avatars2.githubusercontent.com/u/132554'
+      username='Sam'
+      src='https://avatars3.githubusercontent.com/u/5452152'
     />
     <Avatar
       size='medium'
-      username='Tom Coleman'
-      src='https://avatars2.githubusercontent.com/u/132554'
+      username='Sam'
+      src='https://avatars3.githubusercontent.com/u/5452152'
     />
     <Avatar
       size='small'
-      username='Tom Coleman'
-      src='https://avatars2.githubusercontent.com/u/132554'
+      username='Sam'
+      src='https://avatars3.githubusercontent.com/u/5452152'
     />
     <Avatar
       size='tiny'
-      username='Tom Coleman'
-      src='https://avatars2.githubusercontent.com/u/132554'
+      username='Sam'
+      src='https://avatars3.githubusercontent.com/u/5452152'
     />
   </div>
 );
 
+/**
+ * Comments doesn't show up in stories
+ */
+sizes.story = {
+  parameters: { docs: { storyDescription: '4 sizes are supported.' } }
+};
+
 export const initials = () => (
   <div>
-    <Avatar username='Tom Coleman' />
-    <Avatar username='Dominic Nguyen' />
-    <Avatar username='Kyle Suss' />
-    <Avatar username='Michael Shilman' />
+    <Avatar username='Sam' />
+    <Avatar username='Don N' />
+    <Avatar username='Kalani L' />
+    <Avatar username='Minh H' />
   </div>
 );
 
@@ -65,11 +74,11 @@ export const loading = () => (
 export const large = () => (
   <div>
     <Avatar loading size='large' />
-    <Avatar size='large' username='Tom Coleman' />
+    <Avatar size='large' username='Sam' />
     <Avatar
       size='large'
-      username='Tom Coleman'
-      src='https://avatars2.githubusercontent.com/u/132554'
+      username='Sam'
+      src='https://avatars3.githubusercontent.com/u/5452152'
     />
   </div>
 );
@@ -79,10 +88,10 @@ export const knobs = () => (
     loading={boolean('Loading')}
     size={select('Size', ['tiny', 'small', 'medium', 'large'])}
     username='Sam'
-    src='https://avatars3.githubusercontent.com/u/5452152?s=400&u=753fe2deefeea20a487819959e94630ae34f0e7c&v=4'
+    src='https://avatars3.githubusercontent.com/u/5452152'
   />
 );
 
 knobs.story = {
-  decorators: [withKnobs],
+  decorators: [withKnobs]
 };
