@@ -319,3 +319,60 @@ Custom pages
 - get this to load first by loading it first in main.js
 - create package.json script for building docs to deploy it to netlify so others can read it
 build-storybook -s public --docs
+
+
+
+Distribute UI across an Organization
+
+Packaging design system
+single version package that encapsulates
+- common UI components
+- design tokens (style variables)
+- documentation
+
+Add README.md
+
+create src/index.js
+- common entry point for using design system
+- export all design tokens and components
+
+dev dependency to compile JS for release
+- @babel/cli
+- cross-env
+-- set and use env variables across platforms 
+-- no need to worry about syntax across platforms like Windows or Linux
+
+yarn add --dev @babel/cli cross-env
+
+package.json
+- add script to build source directory into dist
+
+{
+  "scripts": {
+    "build": "cross-env BABEL_ENV=production babel src -d dist",
+      ...
+  }
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
+  }
+}
+
+gitignore dist directory
+
+add metadata for publication
+- ensures consumer of the package gets all the info they need
+yarn init
+
+Release management with Auto
+- https://github.com/intuit/auto
+- Automated releases powered by pull request labels.
+- Streamline your release workflow and publish constantly!
+- run in a continuous integration (CI) environment, but all the commands work locally as well
+- publish releases to npm
+- updates a changelog describing changes
+- sets a sensible version number
+- creates git tag linking that version number to a commit in our repository
+
+yarn add --dev auto
