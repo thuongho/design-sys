@@ -376,3 +376,36 @@ Release management with Auto
 - creates git tag linking that version number to a commit in our repository
 
 yarn add --dev auto
+
+Need tokens
+- github
+-- repo access
+- npmjs
+-- read and publish
+
+other maintainers should set up their own .env file following:
+- storybook-static
+- dist
+- .env
+
+Github Labels
+- first thing need to do with Auto is create labels on Github
+- allows auto to update the package version sensibly and create a changelog and release notes
+- tag all future PRs with one of the labels: major, minor, patch, skip-release, prerelease, internal, documentation before merging them
+yarn auto create-labels
+
+publish first release with Auto manually
+- in the future new version numbers will be calc via auto scripts 
+
+yarn auto changelog
+- generate long changelog entry with every commit
+- auto gen are useful, but its a good idea to manually edit it and craft message that is useful for users
+- in this case users don't need to know about all the commits along the way
+
+Nice and simple message for first v0.1.0 version
+- undo the commit Auto just created but keep changes
+git reset HEAD^
+
+git commit -m "Changelog for v0.1.0 [skip ci]"
+- tells CI platforms to ignore these commits
+- dont build and publish
