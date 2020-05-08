@@ -461,3 +461,7 @@ AvatarList stories
 -- ellipsized
 -- bigUserCount
 -- empty
+
+Document
+- add additional comments to make AvatarList a bit more human
+- with automated tooling, the tedium is removed and we can get straight to writing
