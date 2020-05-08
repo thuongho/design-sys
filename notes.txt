@@ -409,3 +409,41 @@ git reset HEAD^
 git commit -m "Changelog for v0.1.0 [skip ci]"
 - tells CI platforms to ignore these commits
 - dont build and publish
+
+publish
+npm version 0.1.0 -m "Bump version to: %s [skip ci]"
+npm publish
+
+Auto creates release on Github
+- deploys to npm
+git push --follow-tags origin master
+yarn auto release
+
+Auto scripts
+{
+  "scripts": {
+    "release": "auto shipit"
+  }
+}
+
+ci
+# ...
+- run: yarn test
+- run: npx chromatic --project-token=2wix88i1ziu
+- run: |
+    if [ $CIRCLE_BRANCH = "master" ]
+    then
+      yarn release
+    fi
+
+Add env tokens to ci
+
+Using design system
+yarn add <your-username>-learnstorybook-design-system
+
+add to .storybook/main.js
+add decorator to .storybook/preview
+
+import the component into a component and use it
+import { Avatar } from 'thuongho-learnstorybook-design-system';
+<Avatar src={avatarUrl} />
