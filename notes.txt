@@ -447,3 +447,17 @@ add decorator to .storybook/preview
 import the component into a component and use it
 import { Avatar } from 'thuongho-learnstorybook-design-system';
 <Avatar src={avatarUrl} />
+
+
+Workflow for design systems
+Build -> review -> test -> document -> Distribute
+
+Build
+AvatarList
+AvatarList stories
+- UI states
+-- smallSize
+-- loading
+-- ellipsized
+-- bigUserCount
+-- empty
