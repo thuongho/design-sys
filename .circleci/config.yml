@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:10.13
+      - image: circleci/node:10.14
     working_directory: ~/repo
     steps:
       - checkout
@@ -17,4 +17,9 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: yarn test
       - run: npx chromatic --project-token=$CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes
+      - run: |
+          if [ $CIRCLE_BRANCH = "master" ]
+          then
+            yarn release
+          fi
       
